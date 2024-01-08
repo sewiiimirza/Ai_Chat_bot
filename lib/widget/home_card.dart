@@ -11,62 +11,67 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Animate.restartOnHotReload=true;
-    return Card(
-      color: Colors.blueAccent.withOpacity(.3),
-      elevation: 0,
-      margin: EdgeInsets.only(bottom: mq.height * .02),
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      child: homeType.leftAlign
-          ? Row(
-              children: [
-                Container(
-                  width: mq.width * .35,
-                  padding: homeType.padding,
-                  child: Lottie.asset(
-                    "assets/lottie/${homeType.lottie}",
-                  ),
+    return InkWell(
+      onTap: homeType.onTap,
+      child: Card(
+        color: Colors.blueAccent.withOpacity(.3),
+        elevation: 0,
+        margin: EdgeInsets.only(bottom: mq.height * .02),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: InkWell(
+          borderRadius: BorderRadius.all(const Radius.circular(20)),
+          child: homeType.leftAlign 
+              ? Row(
+            children: [
+              Container(
+                width: mq.width * .35,
+                padding: homeType.padding,
+                child: Lottie.asset(
+                  "assets/lottie/${homeType.lottie}",
                 ),
+              ),
 
-                const Spacer(),
+              const Spacer(),
 
-                //title
-                Text(
-                  homeType.title,
-                  style: const TextStyle(
-                      fontSize: 24,
-                      wordSpacing: 1,
-                      fontWeight: FontWeight.w500),
+              //title
+              Text(
+                homeType.title,
+                style: const TextStyle(
+                    fontSize: 22,
+                    wordSpacing: 1,
+                    fontWeight: FontWeight.w500),
+              ),
+
+              const Spacer(
+                flex: 2,
+              ),
+            ],
+          )
+              : Row(
+            children: [
+              const Spacer(),
+
+              //title
+              Text(
+                homeType.title,
+                style: const TextStyle(
+                    fontSize: 22,
+                    wordSpacing: 1,
+                    fontWeight: FontWeight.w500),
+              ),
+
+              //lottie
+              Container(
+                width: mq.width * .35,
+                padding: homeType.padding,
+                child: Lottie.asset(
+                  "assets/lottie/${homeType.lottie}",
                 ),
-
-                const Spacer(
-                  flex: 2,
-                ),
-              ],
-            )
-          : Row(
-              children: [
-                const Spacer(),
-
-                //title
-                Text(
-                  homeType.title,
-                  style: const TextStyle(
-                      fontSize: 24,
-                      wordSpacing: 1,
-                      fontWeight: FontWeight.w500),
-                ),
-
-                //lottie
-                Container(
-                  width: mq.width * .35,
-                  padding: homeType.padding,
-                  child: Lottie.asset(
-                    "assets/lottie/${homeType.lottie}",
-                  ),
-                ),
-              ],
-            ),
-    ).animate().fade(duration: 2.seconds,curve: Curves.easeIn);
+              ),
+            ],
+          ),
+        )).animate().fade(duration: 2.seconds,curve: Curves.easeIn),
+    );
   }
 }

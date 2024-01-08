@@ -1,4 +1,8 @@
+import 'package:ai_chat_bot/screens/feature/chatbot_feature.dart';
+import 'package:ai_chat_bot/screens/feature/image_feature.dart';
+import 'package:ai_chat_bot/screens/feature/translator_feature.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 enum HomeType{ aiChatbot,aiImage,aiTranslator }
 
@@ -32,5 +36,13 @@ extension MyHomeType on HomeType{
     HomeType.aiChatbot =>EdgeInsets.zero,
     HomeType.aiImage => EdgeInsets.all(20),
     HomeType.aiTranslator =>EdgeInsets.zero,
+  };
+  //for navigation
+  // Void-callback mean we want to return a function
+  VoidCallback get onTap =>switch(this){
+
+    HomeType.aiChatbot =>()=>Get.to(()=>ChatBotFeature()),
+    HomeType.aiImage =>()=>Get.to(()=>ImageFeature()),
+    HomeType.aiTranslator=>()=>Get.to(() =>TranslatorFeature()),
   };
 }

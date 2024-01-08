@@ -23,7 +23,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
+       theme: ThemeData(
+        appBarTheme:AppBarTheme(
+          elevation: 2,
+          iconTheme: IconThemeData(color: Colors.blueAccent),
+       backgroundColor: Colors.white,
+         centerTitle:true,
+       //  title:Text("Ai Chatbot",
+         titleTextStyle: TextStyle(fontSize: 21,
+             fontWeight: FontWeight.w600,
+             color: Colors.blueAccent),),
+       ),
+
       //  // colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
       //   useMaterial3: true,
       home: SplashScreen(),

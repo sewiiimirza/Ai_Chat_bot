@@ -1,3 +1,4 @@
+import 'package:ai_chat_bot/apis/apis.dart';
 import 'package:ai_chat_bot/helper/global.dart';
 import 'package:ai_chat_bot/helper/pref.dart';
 import 'package:ai_chat_bot/model/home_type.dart';
@@ -23,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     //initializing device size
-   // mq =MediaQuery.sizeOf(context);
+    mq =MediaQuery.sizeOf(context);
+    // APIs.getAnswer('hii');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

@@ -2,6 +2,7 @@ import 'package:ai_chat_bot/helper/pref.dart';
 import 'package:ai_chat_bot/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,10 +34,11 @@ class MyApp extends StatelessWidget {
          titleTextStyle: TextStyle(fontSize: 21,
              fontWeight: FontWeight.w600,
              color: Colors.blueAccent),),
-       ),
+         useMaterial3: true,
+        ),
 
-      //  // colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
-      //   useMaterial3: true,
+      //  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+
       home: SplashScreen(),
     );
   }

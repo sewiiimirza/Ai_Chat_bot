@@ -14,6 +14,7 @@ dependencies:
   lottie: ^2.7.0
   flutter_animate: ^4.3.0
   http: ^1.1.2
+  animated_text_kit: ^4.2.2
   #for hive database
   hive: ^4.0.0-dev.2
   isar_flutter_libs: ^4.0.0-dev.13

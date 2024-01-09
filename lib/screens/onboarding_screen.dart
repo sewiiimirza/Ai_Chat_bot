@@ -1,6 +1,7 @@
 import 'package:ai_chat_bot/helper/global.dart';
 import 'package:ai_chat_bot/model/onboard.dart';
 import 'package:ai_chat_bot/screens/home_screen.dart';
+import 'package:ai_chat_bot/widget/custom_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -61,23 +62,36 @@ class OnboardingScreen extends StatelessWidget {
                 const Spacer(),
 
                 //button
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,elevation: 0,
-                    minimumSize: Size(mq.width*.4, 50)
-                    ),
-                  onPressed: (){
-                    if(isLast){
-                      Get.off(()=>HomeScreen());
-                    //  Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (_)=>HomeScreen()));
-;
-                    }else{
-                      c.nextPage(duration:const  Duration(milliseconds: 600),
-                          curve: Curves.ease);
+                CustomBtn(onTap: (){
+                  if(isLast){
+                    Get.off(()=>HomeScreen());
+                    Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (_)=>HomeScreen()));
 
-                    }
-                    }, child: Text( isLast? "Finish":"Next",
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.white)),
+                  }else{
+                    c.nextPage(duration:const  Duration(milliseconds: 600),
+                        curve: Curves.ease);
+                  }
+                },
+                    text:  isLast? "Finish":"Next",
                 ),
+
+
+//                 ElevatedButton(
+//                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,elevation: 0,
+//                     minimumSize: Size(mq.width*.4, 50)
+//                     ),
+//                   onPressed: (){
+//                     if(isLast){
+//                       Get.off(()=>HomeScreen());
+//                     //  Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (_)=>HomeScreen()));
+// ;
+//                     }else{
+//                       c.nextPage(duration:const  Duration(milliseconds: 600),
+//                           curve: Curves.ease);
+//                            }
+//                     }, child: Text( isLast? "Finish":"Next",
+//                     style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,color: Colors.white)),
+//                 ),
                 const  Spacer(),
               ],
 

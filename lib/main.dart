@@ -1,3 +1,4 @@
+import 'package:ai_chat_bot/apis/app_write.dart';
 import 'package:ai_chat_bot/helper/pref.dart';
 import 'package:ai_chat_bot/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ void main()async  {
   WidgetsFlutterBinding.ensureInitialized();
   //hive initialize
   Pref.initialize();
+  AppWrite.init();
   await  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
   runApp(const MyApp());

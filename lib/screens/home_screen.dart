@@ -28,17 +28,18 @@ class _HomeScreenState extends State<HomeScreen> {
     // APIs.getAnswer('hii');
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+     //   backgroundColor: Colors.white,
         centerTitle:true,
-        title:Text("Ai Chatbot",style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: Colors.blueAccent),),
-        elevation: 2,
+        title:Text("Ai Chatbot",),
+        //style: TextStyle(
+          //  fontWeight: FontWeight.w900,
+          //  color: Colors.blueAccent),),
+       // elevation: 2,
         actions: [
           IconButton(
               padding: EdgeInsets.only(right: 10),
           onPressed: (){},
-             icon:Icon(Icons.brightness_4,color: Colors.blueAccent,size: 27))],
+             icon:Icon(Icons.brightness_4,size: 27))],
       ),
       body:SafeArea(
         child:Center(

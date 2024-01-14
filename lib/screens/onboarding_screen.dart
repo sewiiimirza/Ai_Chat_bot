@@ -1,4 +1,5 @@
 import 'package:ai_chat_bot/helper/global.dart';
+import 'package:ai_chat_bot/main.dart';
 import 'package:ai_chat_bot/model/onboard.dart';
 import 'package:ai_chat_bot/screens/home_screen.dart';
 import 'package:ai_chat_bot/widget/custom_btn.dart';
@@ -43,7 +44,7 @@ class OnboardingScreen extends StatelessWidget {
                 SizedBox(width: mq.width*.7,
                   child: Text(list[ind].subtitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18,letterSpacing: .5,color: Colors.black54),
+                    style: TextStyle(fontSize: 18,letterSpacing: .5,color:Theme.of(context).lightTextColor),
                   ),),
 
 

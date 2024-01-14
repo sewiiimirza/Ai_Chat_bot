@@ -1,7 +1,7 @@
 import 'package:ai_chat_bot/controller/chat_controllere.dart';
 import 'package:ai_chat_bot/helper/global.dart';
+import 'package:ai_chat_bot/main.dart';
 import 'package:ai_chat_bot/widget/message_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class ChatBotFeature extends StatefulWidget {
@@ -33,8 +33,8 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
                 textAlign: TextAlign.center,
                 onTapOutside: (e)=>FocusScope.of(context).unfocus(),
                 decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
+                  fillColor: Theme.of(context).scaffoldBackgroundColor,
+                  filled:true,
                   isDense: true,
                   hintText: "Ask me anything you want....",
                   hintStyle: TextStyle(fontSize: 14,),
@@ -51,14 +51,14 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
           SizedBox(width: 8,),
           CircleAvatar(
             radius: 24,
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: Theme.of(context).buttonColor ,
             child: IconButton(
               onPressed: (){
                 _c.askQuestion();
               },
               icon:Icon(
                  Icons.rocket_launch_rounded,
-                 color: Colors.white,
+                 color:Colors.white,
                size: 29,),
             ),),
         ],

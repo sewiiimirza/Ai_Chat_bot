@@ -24,6 +24,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+
+
+       themeMode: ThemeMode.light,
+       //dark theme
+      darkTheme:ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme:AppBarTheme(
+          elevation: 2,
+       //   iconTheme: IconThemeData(color: Colors.blueAccent),
+      //   backgroundColor: Colors.white,
+          centerTitle:true,
+          //  title:Text("Ai Chatbot",
+          titleTextStyle: TextStyle(fontSize: 21,
+              fontWeight: FontWeight.w600,
+       //       color: Colors.blueAccent),),
+      //  useMaterial3: ,
+      ),
+        ),
+      ),
+
+      //light theme
        theme: ThemeData(
         appBarTheme:AppBarTheme(
           elevation: 2,
@@ -43,4 +64,12 @@ class MyApp extends StatelessWidget {
     );
   }
 
+}
+
+extension AppTheme on ThemeData{
+  //light color text
+
+  Color get lightTextColor=>brightness==Brightness.dark ?Colors.white70:Colors.black54;
+//button color
+  Color get buttonColor=>brightness==Brightness.dark ?Colors.cyan.withOpacity(.5):Colors.blueAccent;
 }

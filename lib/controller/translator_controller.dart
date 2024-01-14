@@ -1,4 +1,9 @@
+
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:ai_chat_bot/apis/apis.dart';
+import 'package:ai_chat_bot/controller/image_controller.dart';
 import 'package:ai_chat_bot/helper/my_dialog.dart';
 import 'package:ai_chat_bot/model/message.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +14,7 @@ class TranslatorController  extends GetxController{
   final resultC=TextEditingController();
 
   final from=''.obs, to=''.obs;
+  final status=Status.none.obs;
 
   
     // list of languages available
@@ -199,12 +205,38 @@ class TranslatorController  extends GetxController{
 
 
 
-  Future<void> askQuestion()async {
-    if (textC.text.trim().isNotEmpty) {
-      //final res = await APIs.getAnswer(textC.text);
-     textC.text='';
-    }else{
-      MyDialog.info('Ask anything');
+  Future<void> translate()async {
+    if (textC.text
+        .trim()
+        .isNotEmpty && to.isNotEmpty) {
+      status.value = Status.loading;
+      String prompt = '';
+      if (from.isNotEmpty) {
+        prompt =
+        'Can you translate give text from ${from.value}.to ${to.value}:\n${textC
+            .text}';
+      } else {
+        prompt =
+        'Can you translate give text from ${to.value}.to ${textC.text}';
+      }
+      log(prompt);
+      final res = await APIs.getAnswer(prompt);
+      resultC.text = utf8.decode(res.codeUnits);
+      status.value = Status.complete;
+    } else {
+      status.value = Status.none;
+      if (to.isEmpty) MyDialog.info('Select To Language');
+      if (textC.text.isEmpty) MyDialog.info('Type something to Translate');
     }
   }
+    void swapLanguage() {
+      if (to.isNotEmpty && from.isNotEmpty) {
+        final t = to.value;
+        to.value = from.value;
+        from.value = t;
+      }
+    }
+
+
+
 }

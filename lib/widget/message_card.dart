@@ -1,4 +1,5 @@
 import 'package:ai_chat_bot/helper/global.dart';
+import 'package:ai_chat_bot/main.dart';
 import 'package:ai_chat_bot/model/message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,7 +29,7 @@ class MessageCard extends StatelessWidget {
               horizontal: mq.width*.02 ,vertical: mq.height*.01),
           decoration:BoxDecoration(
             borderRadius: BorderRadius.only(topLeft: r,topRight: r,bottomRight: r),
-            border: Border.all(color: Colors.black54),),
+            border: Border.all(color: Theme.of(context).lightTextColor),),
           child:message.msg.isEmpty ? AnimatedTextKit(
             animatedTexts: [
               TypewriterAnimatedText(
@@ -53,7 +54,7 @@ class MessageCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: mq.width*.03 ,vertical: mq.height*.01),
             decoration:BoxDecoration(
               borderRadius: BorderRadius.only(topLeft: r,topRight: r,bottomRight: r),
-              border: Border.all(color: Colors.black54),),
+              border: Border.all(color: Theme.of(context).lightTextColor),),
             child: Text(message.msg,textAlign: TextAlign.center,)),
 
             CircleAvatar(

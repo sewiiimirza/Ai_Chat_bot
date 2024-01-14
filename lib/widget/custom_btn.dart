@@ -1,4 +1,5 @@
 import 'package:ai_chat_bot/helper/global.dart';
+import 'package:ai_chat_bot/main.dart';
 import 'package:ai_chat_bot/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 class CustomBtn extends StatelessWidget {
@@ -10,7 +11,7 @@ class CustomBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
      child: ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,
+      style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).buttonColor,
           elevation: 0,
           minimumSize: Size(mq.width*.4, 50)
       ),

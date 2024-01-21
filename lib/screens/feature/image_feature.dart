@@ -78,30 +78,56 @@ class _ImageFeatureState extends State<ImageFeature> {
           //ai image
           Container(
             height: mq.height*.5,
+           margin: EdgeInsets.symmetric(vertical: mq.height*.015),
            alignment: Alignment.center,
             child:
-              Obx(() => _aiImage(),),
-          ),
+              Obx(() => _aiImage(),)),
+             Obx(() => _c.imageList.isEmpty ?const SizedBox():
+             SingleChildScrollView(
+               scrollDirection: Axis.horizontal,
+               physics: BouncingScrollPhysics(),
+               child: Wrap(
+                 spacing: 10,
+                 children:_c.imageList.map((e) =>
+                     InkWell(
+                       onTap:(){_c.url.value=e;
+                       },
+                       child: ClipRRect(
+                         borderRadius: BorderRadius.all(Radius.circular(8)),
+                         child: CachedNetworkImage(
+                                           imageUrl: e,
+                                          height: 100,
+                                          errorWidget: (context, url, error) => SizedBox(),
+                                        ),
+                       ),
+                     ), ).toList(),
+               ),
+             ),
+             ),
 
+            SizedBox(height: 10,),
             //create btn
-            CustomBtn(onTap:_c.createAIImage , text:"Create",),
+            CustomBtn(onTap:_c.searchAiImages , text:"Create",),
 
         ],
       ),
     );
   }
 //_mean private
-  Widget _aiImage()=> switch(_c.status.value){
-    Status.none=>
-        Lottie.asset("assets/lottie/ai_play.json", height:mq.height * .3 ),//.3 mean 30 %of screen
-     Status.complete=> ClipRRect(
-       borderRadius: BorderRadius.all(Radius.circular(10)),
-       child: CachedNetworkImage(
-         imageUrl: _c.url,
-         placeholder: (context, url) => CustomLoading(),
-         errorWidget: (context, url, error) => SizedBox(),
-         ),
-     ),
-  Status.loading=>CustomLoading(),
-};
+  Widget _aiImage()=> ClipRRect(
+    borderRadius: BorderRadius.all(Radius.circular(10)),
+        child: switch(_c.status.value){
+            Status.none=>
+          Lottie.asset("assets/lottie/ai_play.json", height:mq.height * .3 ),//.3 mean 30 %of screen
+             Status.complete=> ClipRRect(
+         borderRadius: BorderRadius.all(Radius.circular(10)),
+         child: CachedNetworkImage(
+           imageUrl: _c.url.value,
+           placeholder: (context, url) => CustomLoading(),
+           errorWidget: (context, url, error) => SizedBox(),
+           ),
+             ),
+          Status.loading=>CustomLoading(),
+        },
+      );
 }
